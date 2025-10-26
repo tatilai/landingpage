@@ -6,14 +6,15 @@
     <title>Vía Segura - Landing</title>
      <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="script.js" defer></script>
 </head>
 <body>
     <header class="navbar">
     <div class="container">
       <div class="logo">Vía Segura</div>
       <nav>
-        <a href="#">Quienes somos</a>
         <a href="#">Acerca de</a>
+        <a href="#">Cómo funciona</a>
         <a href="#">Contacto</a>
       </nav>
       <a href="#" class="btn-download">Descargar App</a>
@@ -26,10 +27,78 @@
       <img src="tu-imagen.png" alt="Ilustración Vía Segura">
     </div>
     <div class="hero-text">
-      <h1>Tu camino, más <span>seguro</span> y acompañado.</h1>
-      <p>Una app colaborativa para descubrir rutas seguras y reportar incidentes en tu ciudad.</p>
-      <a href="#" class="btn-primary">Ver cómo funciona</a>
+      <h1>Tu camino, más tranquilo y acompañado.</h1>
+      <p>Descubrí rutas seguras, reportá incidentes y colaborá con tu comunidad.</p>
+      <a href="#" class="btn-primary">Descargar la app</a>
     </div>
   </section>
+
+  <section class="screens" id="screens">
+  <div class="container">   
+    <div class="screens__row screens--4">
+      <!-- Cada .slice muestra un cuarto de la imagen -->
+      <figure class="screen card slice slice-1" data-io aria-label="Onboarding 1"></figure>
+      <figure class="screen card slice slice-2" data-io aria-label="Onboarding 2"></figure>
+      <figure class="screen card slice slice-3" data-io aria-label="Onboarding 3"></figure>
+      <figure class="screen card slice slice-4" data-io aria-label="Onboarding 4"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ACERCA DE -->
+<section class="about" id="about">
+  <div class="container">
+    <header class="about__head" data-io>
+      <h2>Una <span class="hl">comunidad</span> que se cuida</h2>
+    </header>
+    <p class="about__text" data-io>
+      <strong>Vía Segura</strong> impulsa la seguridad ciudadana combinando 
+      <strong>colaboración</strong> y <strong>tecnología</strong>. 
+      Nuestra app conecta a vecinos y visitantes para 
+      <strong>transformar datos en información útil</strong> que protege a todos.
+      <br><br>
+      Reportá, compartí y planificá tus recorridos con confianza. 
+      <em>¡Cada aporte suma a una red más segura, más fuerte y más humana!</em>
+    </p>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="how" id="como-funciona">
+  <div class="container">
+    <header class="how__head" data-io>
+      <h2>¿Cómo funciona <span class="hl">Vía Segura</span>?</h2>
+    </header>
+
+    <!-- Fila 1: texto izq / imagen der -->
+    <div class="how__row">
+      <div class="how__text" data-io>
+        <h3>Reportes ciudadanos</h3>
+        <p>Informá incidentes en tiempo real y ayudá a otras personas a moverse seguras.</p>
+      </div>
+      <figure class="how__art card art--1" data-io aria-label="Reportes ciudadanos"></figure>
+    </div>
+
+    <!-- Fila 2: imagen izq / texto der -->
+    <div class="how__row how__row--reverse">
+      <figure class="how__art card art--2" data-io aria-label="Rutas seguras"></figure>
+      <div class="how__text" data-io>
+        <h3>Rutas seguras</h3>
+        <p>Descubrí caminos recomendados por la comunidad y evitá zonas de riesgo.</p>
+      </div>
+    </div>
+
+    <!-- Fila 3: texto izq / imagen der -->
+    <div class="how__row">
+      <div class="how__text" data-io>
+        <h3>Comunidad activa</h3>
+        <p>Recibí alertas y novedades del barrio para planificar mejor tus recorridos.</p>
+      </div>
+      <figure class="how__art card art--3" data-io aria-label="Comunidad activa"></figure>
+    </div>
+  </div>
+</section>
+
+
 </body>
 </html>

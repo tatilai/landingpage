@@ -1,0 +1,217 @@
+/* ====== Tamaño real de tu sprite 909x418 (4 pantallas) ====== */
+:root{
+  /* Podés usar 227.25px para clavar 909/4 exacto */
+  --W: 227.25px;    /* ancho de UNA pantalla */
+  --H: 418px;       /* alto de UNA pantalla  */
+}
+
+/* ====== Sección pantallas ====== */
+.screens{ padding: 72px 0 88px; }
+.screens .container{ width: min(1160px, 94vw); margin-inline: auto; }
+
+/* Fila en 4 columnas, poco gap, centrada y escalada leve (ajustable) */
+.screens__row{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;                         /* podés bajar a 8px si te falta ancho */
+  justify-content: center;
+  align-items: end;
+  transform: scale(1.04);            /* ajustá 1.00–1.08 si alguna se corta */
+  transform-origin: top center;
+}
+
+/* Cada “ventana” muestra un cuarto del sprite sin escalar (nítido) */
+.screens .slice{
+  width: var(--W);
+  height: var(--H);
+  background-image: url("img/pantallas.png");
+  background-repeat: no-repeat;
+  background-size: calc(var(--W) * 4) var(--H); /* 4 pantallas de ancho exacto */
+  border-radius: 18px;
+
+  /* nitidez extra (según navegador) */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  backface-visibility: hidden;
+
+  /* === Animación SOLO para pantallas === */
+  animation: screens-float 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Desplazamientos exactos por pantalla */
+.screens .slice-1{ background-position:           0               0; animation-delay: 0s;   }
+.screens .slice-2{ background-position: calc(-1 * var(--W)) 0;    animation-delay: .5s; }
+.screens .slice-3{ background-position: calc(-2 * var(--W)) 0;    animation-delay: 1.0s; }
+.screens .slice-4{ background-position: calc(-3 * var(--W)) 0;    animation-delay: 1.5s; }
+
+/* Hover lift sutil SOLO en pantallas */
+.screens .screen{
+  transition: transform .35s ease, box-shadow .35s ease;
+  will-change: transform;
+}
+.screens .screen:hover{
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 56px rgba(10,22,40,.16);
+}
+
+/* (Opcional) Tilt 3D leve al hover – efecto moderno */
+.screens .slice{
+  transform-style: preserve-3d;
+}
+.screens .slice:hover{
+  transform: perspective(700px) rotateY(6deg) rotateX(2deg) scale(1.02);
+}
+
+/* (Opcional) Glow coral para destacar UNA pantalla: agregar clase is-main en el HTML */
+.screens .is-main{
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 0 0 rgba(255,107,107,0.22);
+  animation: screens-float 7s ease-in-out infinite, screens-pulse 3.2s ease-out infinite;
+}
+
+/* ===== Keyframes ===== */
+@keyframes screens-float{
+  0%   { transform: translateY(0) }
+  50%  { transform: translateY(-8px) }
+  100% { transform: translateY(0) }
+}
+@keyframes screens-pulse{
+  0%   { box-shadow: 0 0 0 0 rgba(255,107,107,0.22); }
+  70%  { box-shadow: 0 0 0 14px rgba(255,107,107,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,107,107,0); }
+}
+
+/* Entrada on-scroll (fade + slide) – SOLO donde haya data-io */
+.screens [data-io]{
+  opacity: 0;
+  transform: translateY(24px) scale(.98);
+  transition: all .7s cubic-bezier(.2,.8,.2,1);
+}
+.screens [data-io].in-view{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Respeta preferencias de usuario */
+@media (prefers-reduced-motion: reduce){
+  .screens .slice{ animation: none }
+  .screens .screen{ transition: none }
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 1100px){
+  .screens__row{
+    grid-template-columns: repeat(2, 1fr);
+    transform: scale(1);            /* evitar cortes en pantallas medianas */
+  }
+}
+@media (max-width: 640px){
+  .screens__row{
+    grid-template-columns: 1fr;
+    transform: scale(1);
+  }
+  .screens .screen:hover{ transform:none; box-shadow:none; }
+}
+
+.about{
+  padding: 100px 0;
+  background: #f9fafb; /* fondo claro */
+  text-align: center;
+}
+.about .container{
+  width: min(900px, 90%);
+  margin-inline: auto;
+}
+.about__head h2{
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #1D3557; /* tu azul principal */
+  margin-bottom: 1rem;
+}
+.about__head .hl{
+  color: #FF6B6B; /* tu coral acento */
+}
+.about__text{
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+  max-width: 700px;
+  margin-inline: auto;
+  text-align: left;
+}
+.about__text strong{
+  color: #1D3557;
+}
+.about__text em{
+  color: #FF6B6B;
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* animación on-scroll */
+.about [data-io]{
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all .8s cubic-bezier(.2,.8,.2,1);
+}
+.about [data-io].in-view{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ===== Cómo funciona ===== */
+.how{ padding: 96px 0; background: #fff; }
+.how .container{ width: min(1100px, 92vw); margin-inline: auto; }
+
+.how__head h2{
+  font-size: clamp(1.8rem, 2.4vw, 2.4rem);
+  font-weight: 800; color: #1D3557; text-align: center; margin-bottom: 28px;
+}
+.hl{ position: relative; }
+.hl::after{ content:""; position:absolute; left:0; right:0; bottom:.05em; height:.35em; background:#FF6B6B; opacity:.3; border-radius:8px; }
+
+.how__row{
+  display: grid; grid-template-columns: 1.05fr .95fr;
+  align-items: center; gap: 32px; margin: 22px 0 42px;
+}
+.how__row--reverse{ grid-template-columns: .95fr 1.05fr; }
+.card{ background:#fff; border:1px solid #e9eef5; border-radius:18px; padding:18px; box-shadow:0 12px 34px rgba(10,22,40,.08); }
+
+.how__text h3{ font: 800 1.35rem/1.2 Inter,system-ui,sans-serif; color:#1D3557; margin:0 0 .4rem; }
+.how__text p{ color:#5f6b7a; margin:0; max-width: 52ch; }
+
+.how__art{ aspect-ratio: 1.2 / 1; min-height: 220px; }
+
+/* Placeholders SVG (reemplazá por tus ilustraciones cuando quieras) */
+.art--1{ background:
+  radial-gradient(circle at 28% 60%, #FF6B6B33 0 60%, transparent 61%),
+  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox=\"0 0 300 220\"><rect x=\"120\" y=\"70\" width=\"60\" height=\"60\" rx=\"10\" fill=\"%231D3557\"/></svg>') center/160px no-repeat,
+  linear-gradient(180deg,#f7fbff,#fff);
+}
+.art--2{ background:
+  radial-gradient(circle at 72% 42%, #1D355722 0 58%, transparent 60%),
+  url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 220\"><circle cx=\"110\" cy=\"110\" r=\"28\" fill=\"%231D3557\"/></svg>') center/160px no-repeat,
+  linear-gradient(180deg,#f7fbff,#fff);
+}
+.art--3{ background:
+  radial-gradient(circle at 50% 50%, #FF6B6B22 0 60%, transparent 62%),
+  url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 220\"><polygon points=\"150,70 190,140 110,140\" fill=\"%231D3557\"/></svg>') center/160px no-repeat,
+  linear-gradient(180deg,#f7fbff,#fff);
+}
+
+/* reveal on-scroll */
+.how [data-io]{ opacity:0; transform: translateY(28px); transition: all .7s cubic-bezier(.2,.8,.2,1); }
+.how [data-io].in-view{ opacity:1; transform: translateY(0); }
+
+/* micro-interacción */
+.how .how__art{ transition: transform .35s ease, box-shadow .35s ease; }
+.how .how__art:hover{ transform: translateY(-6px); box-shadow:0 20px 56px rgba(10,22,40,.16); }
+
+/* responsive */
+@media (max-width: 960px){
+  .how__row, .how__row--reverse{ grid-template-columns: 1fr; }
+  .how__art{ order:-1; } /* imagen arriba en mobile */
+}
