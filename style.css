@@ -44,11 +44,8 @@ section{ scroll-margin-top: var(--nav-h); }
   margin: 0 0 10px;
 }
 
-/* Acento vistoso (subrayado ancho con coral translúcido) */
-.hl-swoosh{
-  position: relative;
-  z-index: 0;
-}
+
+
 
 
 /* Copy */
