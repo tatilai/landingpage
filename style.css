@@ -594,7 +594,8 @@ section{ scroll-margin-top: var(--nav-h); }
 
 .navbar,
 .navbar a,
-.btn-download{
+.btn-download,
+.btn-primary{
     font-family: 'Inter', system-ui, sans-serif;
 }
 
