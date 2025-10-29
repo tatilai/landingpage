@@ -63,6 +63,7 @@ section{ scroll-margin-top: var(--nav-h); }
   line-height: 1.65;
   margin: 0 0 18px;
   max-width: 52ch;
+  text-align: left;
 }
 
 /* ===== Imagen decorativa ===== */
