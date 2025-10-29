@@ -591,6 +591,12 @@ section{ scroll-margin-top: var(--nav-h); }
   box-shadow: 0 2px 8px rgba(0,0,0,.05);
 }
 
+.navbar,
+.navbar a,
+.btn-download{
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
 .navbar .container {
   height: 100%;                          /* ← igual al nav */
   width: min(1100px, 92vw);
@@ -641,6 +647,7 @@ section{ scroll-margin-top: var(--nav-h); }
 
 /* Botón */
 .btn-download {
+  font-family: 'Inter', system-ui, sans-serif;
   background: #3082e3;
   color: #fff;
   padding: 10px 20px;
