@@ -400,8 +400,8 @@ section{ scroll-margin-top: var(--nav-h); }
 .how__row:nth-of-type(even){
  grid-template-columns: 1fr 1fr;
 }
-.how__row:nth-of-type(even) .how__text{ order: 2; }
-.how__row:nth-of-type(even) .how__art{  order: 1; }
+/*.how__row:nth-of-type(even) .how__text{ order: 2; }
+.how__row:nth-of-type(even) .how__art{  order: 1; }*/
 
 /* Textos */
 .how__text h3{
@@ -1040,40 +1040,120 @@ html, body { overflow-x: hidden; }
   }
 }
 
-/* --- Intercalado en desktop para la fila "reverse" --- */
-.how__row--reverse .how__text{ order: 2; }
-.how__row--reverse .how__art { order: 1; }
+/* ===== Cómo funciona: layout robusto con grid-areas ===== */
+.how__row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "text art";   /* texto izq, imagen der */
+  align-items: center;
+  column-gap: 44px;
+  row-gap: 0;
+  min-height: 320px;
+}
 
-/* --- Mobile: apilar SIEMPRE imagen arriba y texto debajo --- */
+/* variante invertida en desktop */
+.how__row--reverse{
+  grid-template-areas: "art text";   /* imagen izq, texto der */
+}
+
+/* asignar áreas a los hijos */
+.how__text{ grid-area: text; }
+.how__art { grid-area: art; }
+
+/* ===== Mobile: apilar SIEMPRE imagen arriba y texto abajo ===== */
 @media (max-width: 960px){
   .how__row,
   .how__row--reverse{
     grid-template-columns: 1fr;
-    row-gap: 12px;
-    margin: 0 0 28px;
+    grid-template-areas:
+      "art"
+      "text";               /* imagen primero, texto después */
     min-height: unset;
+    row-gap: 14px;
+    margin-bottom: 32px;
   }
 
-  /* anula el “pegado” entre filas en mobile */
-  .how__row + .how__row{ margin-top: 0; }
-
-  /* imagen arriba (en todas las filas) */
-  .how__row .how__art,
-  .how__row--reverse .how__art{
-    order: -1;
+  .how__art{
     width: min(92vw, 520px);
     height: auto;
-    aspect-ratio: 16 / 10;
-    z-index: 0;                 /* que no tape al texto */
+    aspect-ratio: 3 / 2;
+    justify-self: center;
   }
 
-  /* texto debajo, alineado a la izquierda y sobre la imagen */
-  .how__row .how__text,
-  .how__row--reverse .how__text{
-    order: 2;
-    text-align: left;
-    padding: 0 12px;
-    position: relative;
-    z-index: 1;                 /* por si había solape */
+  .how__text{
+    text-align: left;       /* forzamos alineación a la izquierda */
+    max-width: 60ch;
+    justify-self: start;    /* evita centrado accidental */
+  }
+}
+
+/* ===== Wave header – fix de padding y centrado ===== */
+.wave-hero{
+  position: relative;
+  background: var(--bg-wave);   /* tu gradiente */
+  overflow: hidden;             /* que nada se escape de la curva */
+  isolation: isolate;           /* por si hay blend/shadows */
+}
+
+/* Onda superior: dale altura clara y consistente */
+.wave-top-divider{
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  line-height: 0;
+  z-index: 0;                   /* detrás del contenido */
+}
+.wave-top-divider svg{
+  display: block;
+  width: 100%;
+  height: clamp(110px, 20vw, 160px);  /* ↑ suficiente altura para la curva */
+}
+.wave-top-divider path{
+  /* Este color debe ser el FONDO de la sección anterior (normalmente blanco) */
+  fill: #ffffff;
+}
+
+/* Contenido de la wave */
+.wave-inner{
+  position: relative;
+  z-index: 1;                   /* por encima de la onda */
+  width: min(1120px, 92vw);
+  margin-inline: auto;
+  /* ↑ padding-top depende de la altura del SVG */
+  padding: clamp(120px, 22vw, 180px) 0 72px;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr; /* copy / mockup */
+  align-items: center;
+  gap: clamp(24px, 4vw, 48px);
+}
+
+/* Texto */
+.wave-copy h2{
+  margin: 0 0 .6rem;
+}
+.wave-copy .lead{
+  margin: 0 0 1.2rem;
+  max-width: 48ch;
+}
+
+/* Mockup: desktop lo “corremos” un poco a la derecha */
+.wave-mockup{ margin: 0; display: grid; place-items: center; }
+@media (min-width: 901px){
+  .wave-mockup img{ transform: translateX(40px); }
+}
+
+/* ===== Mobile: más padding arriba y mockup centrado sin desplazamiento ===== */
+@media (max-width: 900px){
+  .wave-top-divider svg{ height: clamp(140px, 28vw, 190px); }
+  .wave-inner{
+    grid-template-columns: 1fr;
+    padding-top: clamp(140px, 28vw, 200px); /* asegura que el texto no toque la onda */
+    text-align: left;                        /* seguís con alineación izquierda */
+  }
+  .wave-copy .lead{ margin-inline: 0; }
+  .wave-mockup img{
+    width: min(360px, 74vw);
+    transform: none;            /* ← quitamos el corrimiento en mobile */
+    margin: 0 auto;             /* centrado real */
+    display: block;
   }
 }
