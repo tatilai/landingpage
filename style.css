@@ -22,14 +22,11 @@ section{ scroll-margin-top: var(--nav-h); }
   display: flex; 
   flex-direction: column;
    align-items: center;
-
-  /* en vez de center, lo arrancamos arriba con un padding controlado */
   justify-content: flex-start;
   padding: clamp(72px, 5vh, 48px);
    padding-right: 1rem;
   padding-left: 1rem;
   padding-bottom: 0;
-
   text-align: center;
   background: linear-gradient(180deg,#fff 0%, #f9fbff 100%);
   overflow: visible;  
@@ -51,7 +48,12 @@ section{ scroll-margin-top: var(--nav-h); }
   /*margin: 0 0 10px;*/
 }
 
-
+/* En mobile, alinear a la izquierda de forma explícita */
+@media (max-width: 640px){
+  .hero{ text-align: left; }                       /* contenedor */
+  .hero .hero-text{ text-align: left; }            /* bloque de texto */
+  .hero .hero-text p{ text-align: left; }          /* párrafo */
+}
 
 
 
@@ -569,12 +571,17 @@ section{ scroll-margin-top: var(--nav-h); }
 }
 .ss2-dots button.is-active{ background:#1D3557; }
 
-/* Responsive */
-@media (max-width: 640px){
-  .ss2-page{ grid-template-columns: 1fr; } /* 1 por fila en móvil */
-  .ss2-prev{ left: -2px }
-  .ss2-next{ right: -2px }
-  .ss2-page img{ width: 72vw; }
+
+@media (max-width: 768px){
+  .ss2-page{
+    grid-template-columns: 1fr;   /* 1 por fila */
+    gap: 16px;
+    justify-items: center;
+  }
+  .ss2-page img{
+    width: 72vw;
+    max-width: 320px;
+  }
 }
 
 /* ===== Barra de navegación ===== */
@@ -688,6 +695,26 @@ section{ scroll-margin-top: var(--nav-h); }
     display: block;
   }
 }
+
+/* Botón del nav: esconder en mobile para que no desborde */
+@media (max-width: 768px){
+  .btn-download{ display: none; }
+}
+
+/* CTA adentro del menú (opcional): mostrar sólo en mobile */
+.nav-links .nav-cta{ display:none; }
+@media (max-width: 768px){
+  .nav-links .nav-cta{
+    display:inline-block;
+    align-self:center;
+    margin-top: 8px;
+    background:#3082e3; color:#fff;
+    padding:10px 16px; border-radius:10px; font-weight:600;
+  }
+}
+
+/* Si hubiera algún desborde residual en páginas chicas */
+html, body { overflow-x: hidden; }
 
 /* ===== Contact / Newsletter ===== */
 .contact{
@@ -1010,5 +1037,43 @@ section{ scroll-margin-top: var(--nav-h); }
   }
   .footer__social {
     justify-content: center;
+  }
+}
+
+/* --- Intercalado en desktop para la fila "reverse" --- */
+.how__row--reverse .how__text{ order: 2; }
+.how__row--reverse .how__art { order: 1; }
+
+/* --- Mobile: apilar SIEMPRE imagen arriba y texto debajo --- */
+@media (max-width: 960px){
+  .how__row,
+  .how__row--reverse{
+    grid-template-columns: 1fr;
+    row-gap: 12px;
+    margin: 0 0 28px;
+    min-height: unset;
+  }
+
+  /* anula el “pegado” entre filas en mobile */
+  .how__row + .how__row{ margin-top: 0; }
+
+  /* imagen arriba (en todas las filas) */
+  .how__row .how__art,
+  .how__row--reverse .how__art{
+    order: -1;
+    width: min(92vw, 520px);
+    height: auto;
+    aspect-ratio: 16 / 10;
+    z-index: 0;                 /* que no tape al texto */
+  }
+
+  /* texto debajo, alineado a la izquierda y sobre la imagen */
+  .how__row .how__text,
+  .how__row--reverse .how__text{
+    order: 2;
+    text-align: left;
+    padding: 0 12px;
+    position: relative;
+    z-index: 1;                 /* por si había solape */
   }
 }
