@@ -102,16 +102,6 @@ section{ scroll-margin-top: var(--nav-h); }
   }
 }
 
-/* responsive */
-@media (max-width: 900px) {
- 
-  .hero-img {
-    position: static;
-    width: 280px;
-    margin-top: 1rem;
-    mix-blend-mode: normal; /* más nítida en móvil */
-  }
-}
 
 
 /* Botón primario */
@@ -135,21 +125,26 @@ section{ scroll-margin-top: var(--nav-h); }
 }
 
 
-/* Responsive */
+/* Mobile: hero centrado y sin posición absoluta */
 @media (max-width: 900px){
-  .hero-img{
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);  /* centrada abajo en mobile */
-    width: clamp(240px, 68vw, 360px);
-    opacity: .9;
+  .hero {
+    align-items: center;
+    text-align: center;
+    padding: clamp(56px, 7vh, 72px) 1rem 0;
   }
-}
-
-@media (max-width: 600px) {
-  .hero-img {
-    width: 240px;
-    bottom: 10px;
+  .hero-text p { text-align: center; }   /* opcional si lo querés centrado */
+  
+  .hero-img{
+    position: relative;   /* ya no absolute */
+    left: auto;
+    bottom: auto;
+    transform: none;
+    display: block;
+    width: min(78vw, 360px);
+    height: auto;
+    margin: 16px auto 0;  /* centrada debajo del botón */
+    opacity: .95;
+    mix-blend-mode: normal; /* más nítida en móvil */
   }
 }
 

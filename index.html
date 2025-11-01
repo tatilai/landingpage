@@ -9,15 +9,23 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <script src="script.js" defer></script>
   </head>
   <body>
     <header class="navbar">
       <div class="container">
         <div class="logo">
-          <img src="img/icono.png" alt="logo via segura">
+          <img src="img/icono.png" alt="logo via segura" />
         </div>
+        <!-- Botón hamburguesa -->
+        <button
+          class="nav-toggle" aria-expanded="false" aria-controls="navLinks"  aria-label="Abrir menú">
+          ☰
+        </button>
         <nav class="nav-links">
           <a href="#about">Acerca de</a>
           <a href="#funciona">Cómo funciona</a>
@@ -30,18 +38,16 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero-text">
-        <h1>
-          Vía Segura 
-        </h1>
+        <h1>Vía Segura</h1>
         <p>
-         Tu camino, más tranquilo y acompañado. Descubrí <strong>rutas seguras </strong> , reportá incidentes y colaborá con tu
+          Tu camino, más tranquilo y acompañado. Descubrí
+          <strong>rutas seguras </strong> , reportá incidentes y colaborá con tu
           comunidad.
         </p>
         <a href="#descargar" class="btn-primary">Descargar</a>
-        
       </div>
-     <img class="hero-img" src="img/chica.png" alt="Ilustración Vía Segura">
-     <img src="img/login.png" alt="Figura decorativa" class="hero-shape" />
+      <img class="hero-img" src="img/chica.png" alt="Ilustración Vía Segura" />
+      <img src="img/login.png" alt="Figura decorativa" class="hero-shape" />
     </section>
 
     <section class="hero-screens">
@@ -150,78 +156,86 @@
     </section>
 
     <section class="contact" id="contacto" data-io>
-  <div class="contact__wrap">
-    <h2 class="contact__title">Sumate hoy.</h2>
-    <p class="contact__lead">Recibí novedades y consejos.</p>
+      <div class="contact__wrap">
+        <h2 class="contact__title">Sumate hoy.</h2>
+        <p class="contact__lead">Recibí novedades y consejos.</p>
 
-    <form class="contact__form" id="newsletterForm" novalidate>
-      <label class="sr-only" for="emailNews">Tu email</label>
-      <input
-        type="email"
-        id="emailNews"
-        name="email"
-        placeholder="JuanPerez@email.com"
-        required
-        autocomplete="email"
-      />
-      <button type="submit" class="btn-primary contact__btn">Suscribirme</button>
-      <small class="contact__help">Prometemos no hacer spam. Podés darte de baja cuando quieras.</small>
-      <small class="contact__error" id="contactError">Ingresá un email válido.</small>   
-    </form>
-  </div>
-</section>
+        <form class="contact__form" id="newsletterForm" novalidate>
+          <label class="sr-only" for="emailNews">Tu email</label>
+          <input
+            type="email"
+            id="emailNews"
+            name="email"
+            placeholder="JuanPerez@email.com"
+            required
+            autocomplete="email"
+          />
+          <button type="submit" class="btn-primary contact__btn">
+            Suscribirme
+          </button>
+          <small class="contact__help"
+            >Prometemos no hacer spam. Podés darte de baja cuando
+            quieras.</small
+          >
+          <small class="contact__error" id="contactError"
+            >Ingresá un email válido.</small
+          >
+        </form>
+      </div>
+    </section>
 
-<section id="descargar" class="wave-hero" aria-labelledby="wave-title">
-  <!-- Onda en el borde superior -->
-  <div class="wave-top-divider" aria-hidden="true">
-    <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
-      <!-- El fill DEBE ser el color de la sección anterior (blanca) -->
-      <path d="M0,96 C240,32 480,160 720,96 C960,32 1200,128 1440,64 L1440,0 L0,0 Z"></path>
-    </svg>
-  </div>
+    <section id="descargar" class="wave-hero" aria-labelledby="wave-title">
+      <!-- Onda en el borde superior -->
+      <div class="wave-top-divider" aria-hidden="true">
+        <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
+          <!-- El fill DEBE ser el color de la sección anterior (blanca) -->
+          <path
+            d="M0,96 C240,32 480,160 720,96 C960,32 1200,128 1440,64 L1440,0 L0,0 Z"
+          ></path>
+        </svg>
+      </div>
 
-  <div class="wave-inner">
-    <div class="wave-copy">
-      <h2 id="wave-title">Sumate a la comunidad de seguridad urbana.</h2>
-      <p class="lead">Descargá la app o registrate gratis y hacé tu recorrido más seguro.</p>
-      <a href="#" class="btn-primary">Descargar app</a>
-    </div>
+      <div class="wave-inner">
+        <div class="wave-copy">
+          <h2 id="wave-title">Sumate a la comunidad de seguridad urbana.</h2>
+          <p class="lead">
+            Descargá la app o registrate gratis y hacé tu recorrido más seguro.
+          </p>
+          <a href="#" class="btn-primary">Descargar app</a>
+        </div>
 
-    <figure class="wave-mockup">
-      <img src="img/homepantalla.png" alt="Pantalla de la app Vía Segura" />
-    </figure>
-  </div>
-</section>
+        <figure class="wave-mockup">
+          <img src="img/homepantalla.png" alt="Pantalla de la app Vía Segura" />
+        </figure>
+      </div>
+    </section>
   </body>
   <footer class="footer">
-  <div class="footer__container">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <img src="img/icono.png" alt="Logo Vía Segura" class="footer__logo" />
+        <p>Tu camino más tranquilo y acompañado.</p>
+      </div>
 
-    <div class="footer__brand">
-      <img src="img/icono.png" alt="Logo Vía Segura" class="footer__logo">
-      <p>Tu camino más tranquilo y acompañado.</p>
+      <nav class="footer__nav">
+        <a href="#about">Acerca de</a>
+        <a href="#funciona">Cómo funciona</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram" target="_blank">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="#" aria-label="Facebook" target="_blank">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+      </div>
     </div>
 
-    <nav class="footer__nav">
-      <a href="#about">Acerca de</a>
-      <a href="#funciona">Cómo funciona</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-
-    <div class="footer__social">
-      <a href="#" aria-label="Instagram" target="_blank">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
-    
-      <a href="#" aria-label="Facebook" target="_blank">
-        <i class="fa-brands fa-facebook-f"></i>
-      </a>
-     
+    <div class="footer__bottom">
+      <p>© 2025 Vía Segura — Todos los derechos reservados.</p>
     </div>
-
-  </div>
-
-  <div class="footer__bottom">
-    <p>© 2025 Vía Segura — Todos los derechos reservados.</p>
-  </div>
-</footer>
+  </footer>
 </html>

@@ -107,27 +107,70 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const toggle = document.querySelector(".nav-toggle");
-  const nav = document.querySelector(".nav-links");
-  const links = document.querySelectorAll(".nav-links a");
+  const nav    = document.querySelector(".nav-links");
+  const links  = nav ? nav.querySelectorAll("a[href^='#']") : [];
 
-  // menú hamburguesa
-  toggle.addEventListener("click", () => {
-    nav.classList.toggle("open");
-  });
+  // Si no hay nav/toggle, salimos silenciosamente
+  if (!toggle || !nav) return;
 
-  // cerrar menú al hacer click en un link
+  // Accesibilidad ARIA
+  toggle.setAttribute("aria-controls", "navLinks");
+  toggle.setAttribute("aria-expanded", "false");
+  toggle.setAttribute("aria-label", "Abrir menú");
+
+  // Abrir/cerrar menú
+  const openMenu = () => {
+    nav.classList.add("open");
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.setAttribute("aria-label", "Cerrar menú");
+    document.body.classList.add("nav-open"); // bloquea scroll
+    // Enfocar el primer link para navegación con teclado
+    const firstLink = nav.querySelector("a");
+    if (firstLink) firstLink.focus({ preventScroll: true });
+  };
+
+  const closeMenu = () => {
+    nav.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Abrir menú");
+    document.body.classList.remove("nav-open");
+    toggle.focus({ preventScroll: true });
+  };
+
+  const toggleMenu = () => {
+    nav.classList.contains("open") ? closeMenu() : openMenu();
+  };
+
+  toggle.addEventListener("click", toggleMenu);
+
+  // Cerrar al hacer click en un link y hacer scroll suave
   links.forEach(link => {
-    link.addEventListener("click", () => nav.classList.remove("open"));
-  });
-
-  // scroll suave
-  links.forEach(link => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
-      const target = document.querySelector(link.getAttribute("href"));
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href") || "";
+      // solo hash internos reales
+      if (href.startsWith("#") && href.length > 1) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          // Si usás CSS scroll-padding-top ya no hace falta compensar el nav
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       }
+      closeMenu();
     });
+  });
+
+  // Cerrar con ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && nav.classList.contains("open")) {
+      closeMenu();
+    }
+  });
+
+  // Cerrar con clic afuera
+  document.addEventListener("click", (e) => {
+    if (!nav.classList.contains("open")) return;
+    const isClickInside = nav.contains(e.target) || toggle.contains(e.target);
+    if (!isClickInside) closeMenu();
   });
 });
