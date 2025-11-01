@@ -693,3 +693,126 @@ section{ scroll-margin-top: var(--nav-h); }
     display: block;
   }
 }
+
+/* ===== Contact / Newsletter ===== */
+.contact{
+  padding: clamp(56px, 10vh, 96px) 1rem;
+  background: #fff;           /* limpio, sin gradientes */
+}
+
+.contact__wrap{
+  width: min(680px, 92vw);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.contact__title{
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: var(--azul, #1D3557);
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  margin: 0 0 .25rem;
+}
+
+.contact__lead{
+  font-family: Inter, system-ui, sans-serif;
+  color: #6b7990;
+  font-weight: 500;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  margin: 0 0 22px;
+}
+
+/* Form layout */
+.contact__form{
+ display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap; 
+  margin-top: 1rem;
+  font-family:  Inter, system-ui, sans-serif;
+}
+
+.contact__form input[type="email"]{
+  height: 52px;
+  border-radius: 20px;
+  border: 1px solid #e0e5ef;
+  background: #f7f9fc;
+  padding: 0 18px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 1rem;
+  color: #1d3557;
+  transition: all 0.2s ease;
+}
+.contact__form input[type="email"]::placeholder{ color:#9aa6b2; }
+
+.contact__form input[type="email"]:focus{
+  border-color: #3082e3;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(48, 130, 227, 0.2);
+  outline: none;
+}
+
+/* Reuso tu botón primario, le subimos presencia acá */
+.contact__btn{
+  background: #3082e3;
+  color: #fff;
+  font-weight: 700;
+  font-family: Inter, system-ui, sans-serif;
+ text-transform: uppercase !important;
+  border: none; /* elimina el reborde negro */
+  border-radius: 20px;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 10px 24px rgba(48, 130, 227, 0.28);
+}
+.contact__btn:hover{
+  background: #085baf;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(112, 107, 255, 0.28);
+}
+
+/* Label oculto (accesible pero invisible) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+/* Mensajitos */
+.contact__help{
+    color: #6b7990;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  text-align: center;
+  display: block;
+}
+.contact__error,
+.contact__ok{
+  display: none;
+  grid-column: 1 / -1;
+  margin-top: 8px;
+  font-weight: 600;
+}
+.contact__error{ color: var(--coral, #FF6B6B); }
+.contact__ok{ color: #2e7d32; }
+
+/* Estados */
+.contact__form.is-error input{ border-color: var(--coral, #FF6B6B); }
+.contact__form.is-error #contactError{ display: inline-block; }
+.contact__form.is-ok #contactOk{ display: inline-block; }
+
+/* Mobile: apilar */
+@media (max-width: 560px){
+  .contact__form{
+    grid-template-columns: 1fr;
+  }
+  .contact__btn{ width: 100%; }
+}
