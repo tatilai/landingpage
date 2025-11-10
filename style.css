@@ -655,7 +655,8 @@ section{ scroll-margin-top: var(--nav-h); }
   background: #3082e3;
   color: #fff;
   padding: 10px 20px;
-  border-radius: 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
   font-weight: 600;
   text-decoration: none;
   transition: background .3s ease, transform .2s;
