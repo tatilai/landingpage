@@ -1193,6 +1193,7 @@ html, body { overflow-x: hidden; }
 
 .hero-title {
   font-size: 3.2rem;
+  font-weight: 600;
   line-height: 1.1;
   color: #0f2d5c;
   margin: 0 0 18px;
