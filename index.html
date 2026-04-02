@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -23,7 +23,11 @@
         </div>
         <!-- Botón hamburguesa -->
         <button
-          class="nav-toggle" aria-expanded="false" aria-controls="navLinks"  aria-label="Abrir menú">
+          class="nav-toggle"
+          aria-expanded="false"
+          aria-controls="navLinks"
+          aria-label="Abrir menú"
+        >
           ☰
         </button>
         <nav class="nav-links">
@@ -35,7 +39,7 @@
       </div>
     </header>
 
-    <!-- HERO -->
+    <!-- HERO 
     <section class="hero">
       <div class="hero-text">
         <h1>Vía Segura</h1>
@@ -48,6 +52,52 @@
       </div>
       <img class="hero-img" src="img/chica.png" alt="Ilustración Vía Segura" />
       <img src="img/login.png" alt="Figura decorativa" class="hero-shape" />
+    </section>
+-->
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <span class="hero-badge">App colaborativa de seguridad urbana</span>
+
+          <h1 class="hero-title">Tu camino, más tranquilo y acompañado</h1>
+
+          <p class="hero-text">
+            Encontrá rutas más seguras, reportá incidentes de tu zona y recibí
+            alertas de la comunidad para moverte con más confianza.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary">Descargar app</a>
+            <a href="#como-funciona" class="btn btn-secondary"
+              >Ver cómo funciona</a
+            >
+          </div>
+
+          <div class="hero-features">
+            <span>Rutas seguras</span>
+            <span>Alertas en tiempo real</span>
+            <span>Comunidad activa</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img
+            src="img/pantalla bienvenida-2.png"
+            alt="Vista de la app Vía Segura"
+            class="hero-phone"
+          />
+
+          <div class="floating-card floating-card-top">
+            <strong>Ruta recomendada</strong>
+            <p>Recorrido con menor riesgo reportado</p>
+          </div>
+
+          <div class="floating-card floating-card-bottom">
+            <strong>Incidente reportado</strong>
+            <p>Actualización reciente en tu zona</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="hero-screens">
@@ -174,8 +224,7 @@
             Suscribirme
           </button>
           <small class="contact__help"
-            >Prometemos no hacer spam. Podés darte de baja cuando
-            quieras</small
+            >Prometemos no hacer spam. Podés darte de baja cuando quieras</small
           >
           <small class="contact__error" id="contactError"
             >Ingresá un email válido</small
