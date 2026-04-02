@@ -15,7 +15,7 @@ body{
 /* Si tus secciones tienen id y llegás con el nav, ayuda extra: */
 section{ scroll-margin-top: var(--nav-h); }
 
-/* ===== Hero (títulos y copy) ===== */
+/* ===== Hero (títulos y copy) ===== 
 .hero {
   position: relative;
   min-height: max(580px, calc(100vh - var(--nav-h)));
@@ -45,8 +45,8 @@ section{ scroll-margin-top: var(--nav-h); }
   color: var(--azul);
   font-size: clamp(1.75rem, 3.8vw, 3.5rem);
   line-height: 1.1; 
-  /*margin: 0 0 10px;*/
-}
+  /*margin: 0 0 10px;
+}*/
 
 /* En mobile, alinear a la izquierda de forma explícita */
 @media (max-width: 640px){
@@ -1164,6 +1164,7 @@ html, body { overflow-x: hidden; }
 .hero {
   background: #f7f9fc;
   padding: 70px 20px 50px;
+  font-family: Inter, system-ui, sans-serif;
 }
 
 .hero-container {
@@ -1202,7 +1203,7 @@ html, body { overflow-x: hidden; }
   line-height: 1.7;
   color: #5e6b85;
   margin-bottom: 28px;
- font-family: Inter, system-ui, sans-serif;
+ 
 }
 
 .hero-actions {
