@@ -1213,6 +1213,14 @@ html, body { overflow-x: hidden; }
   margin-bottom: 24px;
 }
 
+.hero-brand {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0a77e5;
+  letter-spacing: 0.3px;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -1244,7 +1252,7 @@ html, body { overflow-x: hidden; }
   transform: translateY(-2px);
 }
 
-.hero-features {
+/*.hero-features {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
@@ -1258,6 +1266,28 @@ html, body { overflow-x: hidden; }
   padding: 10px 14px;
   font-size: 0.95rem;
   font-weight: 600;
+}*/
+
+
+.hero-benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: #6a7892;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.hero-benefits span {
+  position: relative;
+  padding-right: 14px;
+}
+
+.hero-benefits span:not(:last-child)::after {
+  content: "•";
+  position: absolute;
+  right: 0;
+  color: #0a77e5;
 }
 
 .hero-visual {
@@ -1309,6 +1339,8 @@ html, body { overflow-x: hidden; }
   bottom: 70px;
   left: 10px;
 }
+
+
 
 @media (max-width: 992px) {
   .hero {
