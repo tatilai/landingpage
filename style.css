@@ -1,5 +1,7 @@
 
-html,body{margin:0;padding: 0;}
+html,body{margin:0;
+  padding: 0; 
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;}
 /* ===== Nav height + offset general de la página ===== */
 :root{
   --nav-h: 64px;        /* alto visual de tu navbar */
@@ -8,15 +10,16 @@ html,body{margin:0;padding: 0;}
 }
 
 body{
-  padding-top: var(--nav-h);      /* evita que el hero quede tapado */
-  scroll-padding-top: var(--nav-h);  /* corrige el anclaje de los links */
+  padding-top: var(--nav-h);      
+  scroll-padding-top: var(--nav-h);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;  
 }
 
 /* Si tus secciones tienen id y llegás con el nav, ayuda extra: */
 section{ scroll-margin-top: var(--nav-h); }
 
-/* ===== Hero (títulos y copy) ===== 
-.hero {
+/* ===== Hero (títulos y copy) ===== */
+/*.hero {
   position: relative;
   min-height: max(580px, calc(100vh - var(--nav-h)));
   display: flex; 
@@ -889,7 +892,7 @@ html, body { overflow-x: hidden; }
 .wave-copy h2{
   font-family: Inter, system-ui, sans-serif;
   color: var(--azul);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.01em;
   font-size: clamp(1.8rem, 3.2vw, 3rem);
   line-height: 1.1;
