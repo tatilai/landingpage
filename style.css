@@ -517,9 +517,11 @@ section{ scroll-margin-top: var(--nav-h); }
 
 /* Cada página ocupa todo el ancho del slider */
 .ss2-page{
-  flex: 0 0 100%;                /* ← 1 página = 100% del ancho */
+  flex: 0 0 100%;
+  box-sizing: border-box;   /* IMPORTANTE */
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr)); /* 2 por página */
+  grid-template-columns: repeat(2, minmax(0,1fr));
   gap: 32px;
   align-items: end;
   justify-items: center;
