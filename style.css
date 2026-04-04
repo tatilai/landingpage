@@ -68,6 +68,10 @@ section{ scroll-margin-top: var(--nav-h); }
   text-align: left;
 }
 
+h2#wave-title{
+  font-family:Inter, system-ui, sans-serif;
+}
+
 /* ===== Imagen decorativa ===== */
 /* imagen grande a la izquierda */
 /* ===== Imagen decorativa del hero ===== */
