@@ -878,8 +878,7 @@ section {
     margin-inline: auto;
   }
 
-  /* Se aumenta la imagen en mobile porque el PNG transparente
-     conserva bastante lienzo alrededor del teléfono. */
+  
   .wave-mockup img {
     height: 520px;
   }
@@ -1058,11 +1057,14 @@ section {
   }
 
   .wave-mockup {
-    height: 380px;
+     width: 100%;
+  height: 420px;
   }
 
   .wave-mockup img {
-    height: 480px;
+  width: auto;
+  height: 530px;
+  max-width: none;
   }
 
   .footer {
