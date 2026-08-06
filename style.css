@@ -1419,7 +1419,7 @@ html, body { overflow-x: hidden; }
 .wave-mockup img {
   display: block;
   width: auto;
-  height: 440px;
+  height: 5000px;
   max-width: none;
 
   object-fit: contain;
