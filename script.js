@@ -270,3 +270,38 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!isClickInside) closeMenu();
   });
 });
+
+const newsletterForm = document.querySelector("#newsletterForm");
+const emailNews = document.querySelector("#emailNews");
+
+if (newsletterForm && emailNews) {
+  newsletterForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    newsletterForm.classList.remove("is-error", "is-ok");
+
+    const email = emailNews.value.trim();
+
+    if (email === "" || !emailNews.checkValidity()) {
+      newsletterForm.classList.add("is-error");
+      emailNews.setAttribute("aria-invalid", "true");
+      emailNews.focus();
+      return;
+    }
+
+    newsletterForm.classList.add("is-ok");
+    emailNews.setAttribute("aria-invalid", "false");
+
+    newsletterForm.reset();
+
+    // Oculta el mensaje después de 5 segundos
+    window.setTimeout(() => {
+      newsletterForm.classList.remove("is-ok");
+    }, 5000);
+  });
+
+  emailNews.addEventListener("input", () => {
+    newsletterForm.classList.remove("is-error", "is-ok");
+    emailNews.removeAttribute("aria-invalid");
+  });
+}

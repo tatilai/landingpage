@@ -598,9 +598,10 @@ section {
 .contact__error,
 .contact__ok {
   display: none;
-  flex-basis: 100%;
+  width: 100%;
   margin-top: 8px;
   font-weight: 600;
+  text-align: center;
 }
 
 .contact__error {
@@ -609,6 +610,14 @@ section {
 
 .contact__ok {
   color: #2e7d32;
+}
+
+.contact__form.is-error #contactError {
+  display: block;
+}
+
+.contact__form.is-ok #contactOk {
+  display: block;
 }
 
 .contact__form.is-error input {

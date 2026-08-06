@@ -58,7 +58,11 @@
           </p>
 
           <div class="hero-actions">
-            <a href="https://proyecto-via-segura.vercel.app/"      class="btn btn-primary">Abrir app</a>
+            <a
+              href="https://proyecto-via-segura.vercel.app/"
+              class="btn btn-primary"
+              >Abrir app</a
+            >
             <a href="#funciona" class="btn btn-secondary">Ver cómo funciona</a>
           </div>
 
@@ -198,17 +202,15 @@
             name="email"
             placeholder="JuanPerez@email.com"
             required
-            autocomplete="email"
-          />
+            autocomplete="email"/>
           <button type="submit" class="btn-primary contact__btn">
             Suscribirme
           </button>
-          <small class="contact__help"
-            >Prometemos no hacer spam. Podés darte de baja cuando quieras</small
-          >
-          <small class="contact__error" id="contactError"
-            >Ingresá un email válido</small
-          >
+          <small class="contact__help">Prometemos no hacer spam. Podés darte de baja cuando quieras</small>
+          <small class="contact__error" id="contactError">Ingresá un email válido</small>
+          <small class="contact__ok" id="contactOk" role="status" aria-live="polite">
+            ¡Te suscribiste correctamente!
+          </small>
         </form>
       </div>
     </section>
