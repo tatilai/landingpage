@@ -630,6 +630,34 @@ section {
   background: var(--fondo-wave);
 }
 
+.wave-copy {
+  position: relative;
+  z-index: 3;
+}
+
+.wave-download {
+  position: relative;
+  z-index: 4;
+}
+
+.wave-mobile-link {
+  position: relative;
+  z-index: 5;
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+
+.wave-mockup,
+.wave-mockup img {
+  pointer-events: none;
+}
+
+.wave-mockup {
+  position: relative;
+  z-index: 1;
+}
+
 .wave-top-divider {
   position: absolute;
   inset: 0 0 auto;
@@ -1117,18 +1145,29 @@ section {
     display: none;
   }
 
-  /* Y mostramos el acceso directo */
   .wave-mobile-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     width: min(100%, 300px);
+    min-height: 48px;
+    padding: 14px 22px;
     box-sizing: border-box;
-    text-align: center;
+
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+    touch-action: manipulation;
   }
 
   .wave-download {
+    width: 100%;
     margin-top: 20px;
+  }
+
+  .wave-mockup {
+    margin-top: 28px;
   }
 
   .footer {
