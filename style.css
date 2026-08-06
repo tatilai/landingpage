@@ -438,7 +438,7 @@ section {
   font-weight: 600;
 }
 
-/* ======================= CÓMO FUNCIONA ======================= */
+
 
 .how {
   padding: 48px 0 72px;
@@ -1017,6 +1017,16 @@ section {
   .about__text,
   .how__text {
     text-align: left;
+  }
+
+  .about__head h2,
+  .how__head h2,
+  .how__text h3,
+  .contact__title,
+  .wave-copy h2 {
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
   }
 
   .contact__form {
