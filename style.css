@@ -685,6 +685,51 @@ section {
   line-height: 1.7;
 }
 
+.wave-download {
+  margin-top: 24px;
+}
+
+.wave-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  gap: 10px;
+  padding: 14px;
+
+  color: #085baf;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+
+  background: #ffffff;
+  border: 1px solid rgba(48, 130, 227, 0.18);
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(19, 41, 75, 0.1);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.wave-qr:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 34px rgba(19, 41, 75, 0.16);
+}
+
+.wave-qr img {
+  display: block;
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  background: #ffffff;
+}
+
+/* Se oculta en escritorio */
+.wave-mobile-link {
+  display: none;
+}
+
 .wave-mockup {
   width: 380px;
   height: 430px;
@@ -1065,6 +1110,25 @@ section {
   width: auto;
   height: 530px;
   max-width: none;
+  }
+
+    /* En celular ocultamos el QR */
+  .wave-qr {
+    display: none;
+  }
+
+  /* Y mostramos el acceso directo */
+  .wave-mobile-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: min(100%, 300px);
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .wave-download {
+    margin-top: 20px;
   }
 
   .footer {
